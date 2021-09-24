@@ -25,6 +25,7 @@ namespace Record_R.common
         public static int lastId(String item)
         {
             int index = 0;
+            checkFileExist();
             try
             {
                 using (var reader = new StreamReader("records/" + item + ".yaml"))
@@ -42,6 +43,16 @@ namespace Record_R.common
 
             }
             return index;
+        }
+
+        public static void checkFileExist()
+        {
+            if (!Directory.Exists(@"records"))
+                Directory.CreateDirectory(@"records");
+            if (!File.Exists(@"records/IG.yaml"))
+                File.Create(@"records/IG.yaml").Close();
+            if (!File.Exists(@"records/Web.yaml"))
+                File.Create(@"records/Web.yaml").Close();
         }
     }
 }

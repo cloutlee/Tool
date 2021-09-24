@@ -28,9 +28,9 @@ namespace Record_R
             dt.Columns.Add("URL");
             DataRow row;
 
-            using (var reader = new StreamReader("records/Web.yaml"))
+            try
             {
-                try
+                using (var reader = new StreamReader("records/Web.yaml"))
                 {
                     YamlStream yaml = new YamlStream();
                     yaml.Load(reader);
@@ -47,22 +47,11 @@ namespace Record_R
                     }
                     dgvResult.DataSource = dt;
                 }
-                catch (Exception ex)
-                {
+            }
+            catch (Exception ex)
+            {
 
-                }
             }
         }
     }
 }
-//datagridview
-
-//欄位根據視窗放大或縮小時 auto填滿整個畫面
-//AutoSizeColumnsMode	=	Fill
-
-//如果在畫面上自行建資料行，要在DataPropertyName鍵入對應的column name
-
-
-//https://www.youtube.com/watch?v=C9s0H6yeFLQ
-//https://vito-note.blogspot.com/2014/06/datagridview-1.html
-//http://epaper.gotop.com.tw/PDFSample/AEL014300.pdf

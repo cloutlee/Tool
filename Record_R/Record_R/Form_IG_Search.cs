@@ -28,9 +28,9 @@ namespace Record_R
             dt.Columns.Add("Level");
             DataRow row;
 
-            using (var reader = new StreamReader("records/IG.yaml"))
+            try
             {
-                try
+                using (var reader = new StreamReader("records/IG.yaml"))
                 {
                     YamlStream yaml = new YamlStream();
                     yaml.Load(reader);
@@ -47,10 +47,10 @@ namespace Record_R
                     }
                     dgvResult.DataSource = dt;
                 }
-                catch (Exception ex)
-                {
+            }
+            catch (Exception ex)
+            {
 
-                }
             }
         }
     }
